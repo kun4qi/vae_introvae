@@ -1,0 +1,76 @@
+{
+  "training": {
+      "seed": 2704, 
+      "loss": "ssim+l2", 
+      "alpha": 0.5, 
+      "beta": 0.04, 
+      "margin": 120, 
+      "w_enc_reg": 1.0, 
+      "w_enc_margin": 1.0, 
+      "w_enc_latent": 5.0, 
+      "w_enc_recon": 1.0, 
+      "w_dec_latent": 5.0, 
+      "w_dec_recon": 2.5, 
+      "n_epochs": 200, 
+      "sync_batchnorm": true, 
+      "use_cuda": true, 
+      "visible_devices": "0,1,2,3", 
+      "val_mode": "train"
+  }, 
+  "save": {
+      "study_name": "result_folder", 
+      "output_root_dir": "result/", 
+      "save_epoch_interval": 200, 
+      "save_image_epoch_interval": 5, 
+      "n_saved": 1, 
+      "log_iter_interval": 100, 
+      "n_save_images": 8, 
+      "load_model_dir": "", 
+      "model_savename": "", 
+      "num_seed": 100, 
+      "t_sne": false
+  }, 
+  "dataset": {
+      "mode": "train", 
+      "name": "Dataset", 
+      "root_dir_path": "./data/brats_separated", 
+      "select_slice": "flair", 
+      "use_augmentation": true, 
+      "batch_size": 16, 
+      "num_workers": 16, 
+      "image_size": 256
+  }, 
+  "model": {
+      "input_dim": 1, 
+      "z_dim": 64, 
+      "enc_filters": [
+        32, 
+        64, 
+        128, 
+        256, 
+        512, 
+        512, 
+        512
+      ], 
+      "dec_filters": [
+        512, 
+        512, 
+        512, 
+        256, 
+        128, 
+        64, 
+        32, 
+        16
+      ], 
+      "enc_activation": "leaky_relu", 
+      "dec_activation": "leaky_relu", 
+      "dec_final_activation": "none", 
+      "enc_spectral_norm": true, 
+      "dec_spectral_norm": true, 
+      "saved": false
+  }, 
+  "optimizer": {
+      "enc_lr": 0.0001, 
+      "dec_lr": 0.0001
+  }
+}
